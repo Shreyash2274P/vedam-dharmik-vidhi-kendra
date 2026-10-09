@@ -1,0 +1,3330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =========================================
+         BASIC PAGE INFORMATION
+    ========================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Vedam Dharmik Vidhi Kendra - Traditional Vedic Puja, Sanskar, Yag, Vivah, Kundali and Spiritual Guidance in Pune.">
+
+    <meta name="keywords"
+        content="Vedam Dharmik Vidhi Kendra, Guruji Pune, Puja Pune, Vastu Shanti, Satyanarayan Puja, Vivah, Navchandi Yag, Rudra, Kundali">
+
+    <meta name="author"
+        content="Vedam Dharmik Vidhi Kendra">
+
+    <meta name="theme-color"
+        content="#5a0b14">
+
+
+    <!-- =========================================
+         WEBSITE TITLE
+    ========================================== -->
+
+    <title>Vedam Dharmik Vidhi Kendra | Vedic Puja & Sanskar</title>
+
+
+    <!-- =========================================
+         WEBSITE ICON
+    ========================================== -->
+
+    <link rel="icon"
+        type="image/jpeg"
+        href="logo/vedam-logo.jpg">
+
+
+    <!-- =========================================
+         GOOGLE FONTS
+    ========================================== -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <!-- =========================================
+         MAIN CSS
+    ========================================== -->
+
+    <link rel="stylesheet"
+        href="css/style.css">
+
+
+    <!-- =========================================
+         GURUJI PROFILE EXTRA STYLES
+    ========================================== -->
+
+    <style>
+
+        /* =========================================
+           GURUJI CARD
+        ========================================== */
+
+        .guruji-profile-trigger {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 0;
+            border: none;
+            background: transparent;
+            color: inherit;
+            font: inherit;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 22px;
+            overflow: hidden;
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .guruji-profile-trigger:hover {
+            transform: translateY(-8px);
+        }
+
+        .guruji-profile-trigger:focus-visible {
+            outline: 3px solid #d89b35;
+            outline-offset: 4px;
+        }
+
+        .guruji-profile-trigger .guruji-card-image {
+            overflow: hidden;
+        }
+
+        .guruji-profile-trigger .guruji-card-image img {
+            display: block;
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .guruji-profile-trigger:hover .guruji-card-image img {
+            transform: scale(1.05);
+        }
+
+        .guruji-view-profile {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 12px;
+            padding: 9px 17px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #8d1625, #5a0b14);
+            color: #ffffff;
+            font-family: "Poppins", sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            transition:
+                background 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .guruji-profile-trigger:hover .guruji-view-profile {
+            background: linear-gradient(135deg, #b52334, #76101d);
+            transform: translateX(3px);
+        }
+
+
+        /* =========================================
+           GURUJI PROFILE MODAL
+        ========================================== */
+
+        .guruji-profile-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            transition:
+                opacity 0.3s ease,
+                visibility 0.3s ease;
+        }
+
+        .guruji-profile-modal.active {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .guruji-profile-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(25, 8, 10, 0.82);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .guruji-profile-dialog {
+            position: relative;
+            z-index: 2;
+            width: min(920px, 100%);
+            max-height: 92vh;
+            overflow-y: auto;
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            background: #fffaf3;
+            border: 1px solid rgba(171, 103, 25, 0.25);
+            border-radius: 28px;
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
+            transform: translateY(25px) scale(0.97);
+            transition: transform 0.35s ease;
+        }
+
+        .guruji-profile-modal.active .guruji-profile-dialog {
+            transform: translateY(0) scale(1);
+        }
+
+
+        /* =========================================
+           CLOSE BUTTON
+        ========================================== */
+
+        .guruji-profile-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 5;
+            width: 42px;
+            height: 42px;
+            border: none;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.92);
+            color: #5a0b14;
+            font-size: 29px;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.18);
+            transition:
+                background 0.25s ease,
+                color 0.25s ease,
+                transform 0.25s ease;
+        }
+
+        .guruji-profile-close:hover {
+            background: #5a0b14;
+            color: #ffffff;
+            transform: rotate(90deg);
+        }
+
+
+        /* =========================================
+           GURUJI PROFILE IMAGE
+        ========================================== */
+
+        .guruji-profile-image-wrap {
+            min-height: 520px;
+            padding: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(218, 166, 75, 0.25),
+                    transparent 65%
+                ),
+                linear-gradient(
+                    145deg,
+                    #5a0b14,
+                    #741321 55%,
+                    #3f080e
+                );
+        }
+
+        .guruji-profile-image {
+            display: block;
+            width: 100%;
+            height: 460px;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 20px;
+            border: 4px solid rgba(255, 215, 139, 0.75);
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.35);
+        }
+
+
+        /* =========================================
+           PROFILE CONTENT
+        ========================================== */
+
+        .guruji-profile-content {
+            padding: 48px 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .guruji-profile-label {
+            display: inline-flex;
+            width: fit-content;
+            margin-bottom: 12px;
+            padding: 7px 14px;
+            border-radius: 20px;
+            background: rgba(90, 11, 20, 0.08);
+            color: #8d1625;
+            font-family: "Noto Sans Devanagari", sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .guruji-profile-content h2 {
+            margin: 0 0 8px;
+            color: #5a0b14;
+            font-family: "Noto Sans Devanagari", "Poppins", sans-serif;
+            font-size: clamp(28px, 4vw, 40px);
+            line-height: 1.2;
+        }
+
+        .guruji-profile-role {
+            margin: 0 0 28px;
+            color: #806b67;
+            font-family: "Poppins", sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================================
+           PROFILE DETAILS
+        ========================================== */
+
+        .guruji-profile-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .guruji-profile-detail {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            min-height: 75px;
+            padding: 13px 15px;
+            background: #ffffff;
+            border: 1px solid rgba(90, 11, 20, 0.09);
+            border-radius: 15px;
+            box-shadow: 0 5px 18px rgba(73, 35, 15, 0.05);
+        }
+
+        .guruji-profile-detail-icon {
+            flex: 0 0 40px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(90, 11, 20, 0.08);
+            font-size: 19px;
+        }
+
+        .guruji-profile-detail-text {
+            min-width: 0;
+        }
+
+        .guruji-profile-detail small {
+            display: block;
+            margin-bottom: 3px;
+            color: #947c76;
+            font-family: "Poppins", sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .guruji-profile-detail strong {
+            display: block;
+            color: #3c2522;
+            font-family: "Noto Sans Devanagari", "Poppins", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.45;
+            word-break: break-word;
+        }
+
+
+        /* =========================================
+           PROFILE ACTION BUTTONS
+        ========================================== */
+
+        .guruji-profile-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .guruji-profile-actions a {
+            min-height: 48px;
+            padding: 12px 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-family: "Poppins", sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .guruji-profile-actions a:hover {
+            transform: translateY(-2px);
+        }
+
+        .guruji-profile-call {
+            background: linear-gradient(135deg, #8d1625, #5a0b14);
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(90, 11, 20, 0.2);
+        }
+
+        .guruji-profile-whatsapp {
+            background: #168c45;
+            color: #ffffff;
+            box-shadow: 0 8px 20px rgba(22, 140, 69, 0.18);
+        }
+
+
+        /* =========================================
+           BODY LOCK WHEN MODAL IS OPEN
+        ========================================== */
+
+        body.guruji-modal-open {
+            overflow: hidden;
+        }
+
+
+        /* =========================================
+           RESPONSIVE - TABLET
+        ========================================== */
+
+        @media (max-width: 800px) {
+
+            .guruji-profile-dialog {
+                grid-template-columns: 1fr;
+                max-height: 94vh;
+            }
+
+            .guruji-profile-image-wrap {
+                min-height: 330px;
+                padding: 22px 55px 18px;
+            }
+
+            .guruji-profile-image {
+                height: 300px;
+                max-width: 360px;
+            }
+
+            .guruji-profile-content {
+                padding: 30px 25px 35px;
+            }
+
+            .guruji-profile-details {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+
+        /* =========================================
+           RESPONSIVE - MOBILE
+        ========================================== */
+
+        @media (max-width: 520px) {
+
+            .guruji-profile-modal {
+                padding: 10px;
+            }
+
+            .guruji-profile-dialog {
+                border-radius: 22px;
+            }
+
+            .guruji-profile-image-wrap {
+                min-height: 270px;
+                padding: 18px 45px 12px;
+            }
+
+            .guruji-profile-image {
+                height: 250px;
+                border-radius: 16px;
+            }
+
+            .guruji-profile-close {
+                top: 10px;
+                right: 10px;
+                width: 38px;
+                height: 38px;
+                font-size: 25px;
+            }
+
+            .guruji-profile-content {
+                padding: 25px 18px 28px;
+            }
+
+            .guruji-profile-content h2 {
+                font-size: 27px;
+            }
+
+            .guruji-profile-role {
+                margin-bottom: 20px;
+            }
+
+            .guruji-profile-details {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                margin-bottom: 22px;
+            }
+
+            .guruji-profile-detail {
+                min-height: 68px;
+            }
+
+            .guruji-profile-actions {
+                flex-direction: column;
+            }
+
+            .guruji-profile-actions a {
+                width: 100%;
+            }
+
+        }
+
+
+        /* =========================================
+           SMALL MOBILE
+        ========================================== */
+
+        @media (max-width: 360px) {
+
+            .guruji-profile-image-wrap {
+                padding-left: 35px;
+                padding-right: 35px;
+            }
+
+            .guruji-profile-image {
+                height: 220px;
+            }
+
+            .guruji-profile-content h2 {
+                font-size: 24px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         PAGE LOADER
+    =================================================== -->
+
+    <div id="page-loader" class="page-loader">
+
+        <div class="loader-content">
+
+            <div class="loader-om">
+                ॐ
+            </div>
+
+            <p>
+                वेदम धार्मिक विधी केंद्र
+            </p>
+
+            <span>
+                श्रद्धा • संस्कार • सेवा
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         HEADER / NAVIGATION
+    =================================================== -->
+
+    <header id="header" class="site-header">
+
+        <div class="container header-container">
+
+
+            <!-- LOGO -->
+
+            <a href="#home"
+                class="brand">
+
+                <img
+                    src="logo/vedam-logo.jpg"
+                    alt="Vedam Dharmik Vidhi Kendra Logo"
+                    class="brand-logo">
+
+                <div class="brand-text">
+
+                    <span class="brand-name">
+                        वेदम
+                    </span>
+
+                    <span class="brand-subtitle">
+                        धार्मिक विधी केंद्र
+                    </span>
+
+                </div>
+
+            </a>
+
+
+            <!-- DESKTOP NAVIGATION -->
+
+            <nav class="desktop-navigation"
+                aria-label="Main Navigation">
+
+                <a href="#home"
+                    class="nav-link active">
+                    Home
+                </a>
+
+                <a href="#about"
+                    class="nav-link">
+                    About
+                </a>
+
+                <a href="#services"
+                    class="nav-link">
+                    Services
+                </a>
+
+                <a href="#gallery"
+                    class="nav-link">
+                    Gallery
+                </a>
+
+                <a href="#why-us"
+                    class="nav-link">
+                    Why Us
+                </a>
+
+                <a href="#contact"
+                    class="nav-link">
+                    Contact
+                </a>
+
+            </nav>
+
+
+            <!-- HEADER CONTACT BUTTON -->
+
+            <a href="tel:+917350325936"
+                class="header-call-button">
+
+                <span class="call-icon">
+                    ☎
+                </span>
+
+                <span>
+                    Call Now
+                </span>
+
+            </a>
+
+
+            <!-- MOBILE MENU BUTTON -->
+
+            <button
+                id="mobile-menu-button"
+                class="mobile-menu-button"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+
+        <!-- MOBILE NAVIGATION -->
+
+        <nav
+            id="mobile-navigation"
+            class="mobile-navigation"
+            aria-label="Mobile Navigation">
+
+            <a href="#home"
+                class="mobile-nav-link">
+                🏠 Home
+            </a>
+
+            <a href="#about"
+                class="mobile-nav-link">
+                🙏 About Guruji
+            </a>
+
+            <a href="#services"
+                class="mobile-nav-link">
+                🪔 Puja & Services
+            </a>
+
+            <a href="#gallery"
+                class="mobile-nav-link">
+                📸 Gallery
+            </a>
+
+            <a href="#why-us"
+                class="mobile-nav-link">
+                ⭐ Why Choose Us
+            </a>
+
+            <a href="#testimonials"
+                class="mobile-nav-link">
+                💬 Testimonials
+            </a>
+
+            <a href="#enquiry"
+                class="mobile-nav-link">
+                📝 Book / Enquire
+            </a>
+
+            <a href="#contact"
+                class="mobile-nav-link">
+                📞 Contact
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ==================================================
+         MAIN WEBSITE
+    =================================================== -->
+
+    <main>
+
+
+        <!-- ==================================================
+             HERO / HOME SECTION
+        =================================================== -->
+
+        <section
+            id="home"
+            class="hero-section">
+
+            <div class="hero-background">
+
+                <img
+                    src="logo/vedam-banner.jpg"
+                    alt=""
+                    class="hero-banner-image">
+
+                <div class="hero-overlay"></div>
+
+            </div>
+
+
+            <div class="container hero-container">
+
+                <div class="hero-content">
+
+                    <div class="hero-symbol">
+                        ॐ
+                    </div>
+
+                    <p class="hero-top-text">
+                        ॥ श्री गणेशाय नमः ॥
+                    </p>
+
+                    <h1 class="hero-title">
+
+                        वेदम
+
+                        <span>
+                            धार्मिक विधी केंद्र
+                        </span>
+
+                    </h1>
+
+                    <p class="hero-tagline">
+                        संस्कार आमचे समाधान तुमचे
+                    </p>
+
+                    <p class="hero-description">
+
+                        सर्व प्रकारचे धार्मिक विधी
+                        शास्त्रोक्त पद्धतीने
+                        केले जातील.
+
+                    </p>
+
+
+                    <div class="hero-buttons">
+
+                        <a
+                            href="tel:+917350325936"
+                            class="btn btn-primary">
+
+                            <span>☎</span>
+                            Call Guruji
+
+                        </a>
+
+
+                        <a
+                            href="https://wa.me/917350325936"
+                            target="_blank"
+                            rel="noopener"
+                            class="btn btn-whatsapp">
+
+                            <span>💬</span>
+                            WhatsApp
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="hero-location">
+
+                        <span>📍</span>
+
+                        <span>
+                            आंबेगाव पठार, पुणे
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="#about"
+                class="scroll-indicator"
+                aria-label="Scroll to About">
+
+                <span>
+                    Explore
+                </span>
+
+                <span class="scroll-arrow">
+                    ↓
+                </span>
+
+            </a>
+
+        </section>
+
+
+        <!-- ==================================================
+             QUICK INFORMATION STRIP
+        =================================================== -->
+
+        <section class="quick-info-section">
+
+            <div class="container quick-info-grid">
+
+
+                <div class="quick-info-card">
+
+                    <span class="quick-info-icon">
+                        🕉️
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            शास्त्रोक्त विधी
+                        </strong>
+
+                        <p>
+                            Traditional Vedic Methods
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-info-card">
+
+                    <span class="quick-info-icon">
+                        📿
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            अनुभवी गुरुजी
+                        </strong>
+
+                        <p>
+                            Experienced Purohits
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-info-card">
+
+                    <span class="quick-info-icon">
+                        🪔
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            विविध धार्मिक विधी
+                        </strong>
+
+                        <p>
+                            Multiple Religious Services
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="quick-info-card">
+
+                    <span class="quick-info-icon">
+                        📍
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            पुणे
+                        </strong>
+
+                        <p>
+                            Pune & Nearby Areas
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             ABOUT SECTION
+        =================================================== -->
+
+        <section
+            id="about"
+            class="section about-section">
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        🙏 आमच्याबद्दल
+                    </span>
+
+                    <h2>
+                        About
+                        <span>Vedam</span>
+                    </h2>
+
+                    <p>
+                        श्रद्धा, परंपरा आणि शास्त्रोक्त विधी यांचा
+                        विश्वासपूर्ण संगम.
+                    </p>
+
+                </div>
+
+
+                <div class="about-content">
+
+
+                    <!-- ABOUT MAIN IMAGE -->
+
+                    <div class="about-image-wrapper">
+
+                        <div class="about-image-decoration"></div>
+
+                        <img
+                            src="guruji/pratap-guruji.jpg"
+                            alt="Pratap Inamdar Guruji"
+                            class="about-image">
+
+                        <div class="about-image-badge">
+
+                            <span>
+                                🕉️
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    वेदम
+                                </strong>
+
+                                <small>
+                                    धार्मिक विधी केंद्र
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ABOUT TEXT -->
+
+                    <div class="about-text">
+
+                        <span class="small-heading">
+                            प्रताप इनामदार गुरुजी
+                        </span>
+
+
+                        <h3>
+                            परंपरेतून संस्कार,
+                            <br>
+                            श्रद्धेतून समाधान.
+                        </h3>
+
+
+                        <p>
+
+                            वेदम धार्मिक विधी केंद्रामध्ये
+                            विविध धार्मिक विधी, पूजा, याग,
+                            संस्कार आणि आध्यात्मिक मार्गदर्शन
+                            शास्त्रोक्त पद्धतीने केले जाते.
+
+                        </p>
+
+
+                        <p>
+
+                            प्रत्येक विधी श्रद्धा, योग्य पद्धत
+                            आणि परंपरेचा आदर राखून करण्याचा
+                            आमचा प्रयत्न असतो.
+
+                        </p>
+
+
+                        <div class="about-highlights">
+
+                            <div class="about-highlight">
+
+                                <span>✓</span>
+
+                                <p>
+                                    शास्त्रोक्त पद्धती
+                                </p>
+
+                            </div>
+
+
+                            <div class="about-highlight">
+
+                                <span>✓</span>
+
+                                <p>
+                                    अनुभवी मार्गदर्शन
+                                </p>
+
+                            </div>
+
+
+                            <div class="about-highlight">
+
+                                <span>✓</span>
+
+                                <p>
+                                    विविध धार्मिक विधी
+                                </p>
+
+                            </div>
+
+
+                            <div class="about-highlight">
+
+                                <span>✓</span>
+
+                                <p>
+                                    भक्ती व समर्पण
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <a
+                            href="#services"
+                            class="text-button">
+
+                            आमच्या सेवा पहा
+                            <span>→</span>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==================================================
+                     GURUJI CARDS
+                =================================================== -->
+
+                <div class="gurujis-section">
+
+
+                    <!-- PRATAP GURUJI -->
+
+                    <button
+                        type="button"
+                        class="guruji-card guruji-profile-trigger"
+                        data-guruji="pratap"
+                        aria-label="View profile of Pratap Inamdar Guruji">
+
+                        <div class="guruji-card-image">
+
+                            <img
+                                src="guruji/pratap-guruji.jpg"
+                                alt="Pratap Inamdar Guruji">
+
+                        </div>
+
+                        <div class="guruji-card-content">
+
+                            <span>
+                                गुरुजी
+                            </span>
+
+                            <h3>
+                                प्रताप इनामदार गुरुजी
+                            </h3>
+
+                            <p>
+                                Vedic Purohit & Religious Services
+                            </p>
+
+                            <div class="guruji-view-profile">
+                                View Profile →
+                            </div>
+
+                        </div>
+
+                    </button>
+
+
+                    <!-- AJINKYA GURUJI -->
+
+                    <button
+                        type="button"
+                        class="guruji-card guruji-profile-trigger"
+                        data-guruji="ajinkya"
+                        aria-label="View profile of Ajinkya Inamdar Guruji">
+
+                        <div class="guruji-card-image">
+
+                            <img
+                                src="guruji/ajinkya-guruji.jpg"
+                                alt="Ajinkya Inamdar Guruji">
+
+                        </div>
+
+                        <div class="guruji-card-content">
+
+                            <span>
+                                गुरुजी
+                            </span>
+
+                            <h3>
+                                अजिंक्य इनामदार गुरुजी
+                            </h3>
+
+                            <p>
+                                Vedic Purohit & Religious Services
+                            </p>
+
+                            <div class="guruji-view-profile">
+                                View Profile →
+                            </div>
+
+                        </div>
+
+                    </button>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             SERVICES SECTION
+        =================================================== -->
+
+        <section
+            id="services"
+            class="section services-section">
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        🪔 आमच्या सेवा
+                    </span>
+
+                    <h2>
+                        Puja &
+                        <span>Services</span>
+                    </h2>
+
+                    <p>
+                        विविध धार्मिक विधी आणि संस्कार
+                        शास्त्रोक्त पद्धतीने.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="services-grid"
+                    class="services-grid">
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             GALLERY SECTION
+        =================================================== -->
+
+        <section
+            id="gallery"
+            class="section gallery-section">
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        📸 आमच्या आठवणी
+                    </span>
+
+                    <h2>
+                        Puja
+                        <span>Gallery</span>
+                    </h2>
+
+                    <p>
+                        आमच्या विविध धार्मिक विधींची
+                        काही क्षणचित्रे.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="gallery-filters"
+                    class="gallery-filters">
+
+                    <button
+                        class="gallery-filter active"
+                        data-filter="all">
+                        All
+                    </button>
+
+                    <button
+                        class="gallery-filter"
+                        data-filter="satyanarayan">
+                        सत्यनारायण
+                    </button>
+
+                    <button
+                        class="gallery-filter"
+                        data-filter="vastu">
+                        वास्तुशांत
+                    </button>
+
+                    <button
+                        class="gallery-filter"
+                        data-filter="vivah">
+                        विवाह
+                    </button>
+
+                    <button
+                        class="gallery-filter"
+                        data-filter="navchandi">
+                        नवचंडी
+                    </button>
+
+                    <button
+                        class="gallery-filter"
+                        data-filter="yag">
+                        याग
+                    </button>
+
+                    <button
+                        class="gallery-filter"
+                        data-filter="rudra">
+                        रुद्र
+                    </button>
+
+                    <button
+                        class="gallery-filter"
+                        data-filter="sanskar">
+                        संस्कार
+                    </button>
+
+                </div>
+
+
+                <div
+                    id="gallery-grid"
+                    class="gallery-grid">
+
+
+                    <!-- SATYANARAYAN -->
+
+                    <article
+                        class="gallery-item"
+                        data-category="satyanarayan">
+
+                        <button
+                            class="gallery-image-button"
+                            data-image="gallery/satyanarayan.jpg"
+                            data-title="सत्यनारायण पूजा">
+
+                            <img
+                                src="gallery/satyanarayan.jpg"
+                                alt="Satyanarayan Puja"
+                                loading="lazy">
+
+                            <div class="gallery-overlay">
+
+                                <span>
+                                    🔍
+                                </span>
+
+                                <p>
+                                    सत्यनारायण पूजा
+                                </p>
+
+                            </div>
+
+                        </button>
+
+                    </article>
+
+
+                   <!-- VASTU SHANTI PHOTO 1 -->
+
+<article class="gallery-item" data-category="vastu">
+
+    <button
+        type="button"
+        class="gallery-image-button"
+        data-image="gallery/vastukshanti/vastu-shanti1.jpg"
+        data-title="वास्तुशांत पूजा - 1">
+
+        <img
+            src="gallery/vastukshanti/vastu-shanti1.jpg"
+            alt="वास्तुशांत पूजा - छायाचित्र 1"
+            loading="lazy">
+
+        <div class="gallery-overlay">
+            <span>🔍</span>
+            <p>वास्तुशांत पूजा</p>
+        </div>
+
+    </button>
+
+</article>
+
+
+<!-- VASTU SHANTI PHOTO 2 -->
+
+<article class="gallery-item" data-category="vastu">
+
+    <button
+        type="button"
+        class="gallery-image-button"
+        data-image="gallery/vastukshanti/vastu-shanti2.jpg"
+        data-title="वास्तुशांत पूजा - 2">
+
+        <img
+            src="gallery/vastukshanti/vastu-shanti2.jpg"
+            alt="वास्तुशांत पूजा - छायाचित्र 2"
+            loading="lazy">
+
+        <div class="gallery-overlay">
+            <span>🔍</span>
+            <p>वास्तुशांत पूजा</p>
+        </div>
+
+    </button>
+
+</article>
+
+
+<!-- VASTU SHANTI PHOTO 3 -->
+
+<article class="gallery-item" data-category="vastu">
+
+    <button
+        type="button"
+        class="gallery-image-button"
+        data-image="gallery/vastukshanti/vastu-shanti3.jpg"
+        data-title="वास्तुशांत पूजा - 3">
+
+        <img
+            src="gallery/vastukshanti/vastu-shanti3.jpg"
+            alt="वास्तुशांत पूजा - छायाचित्र 3"
+            loading="lazy">
+
+        <div class="gallery-overlay">
+            <span>🔍</span>
+            <p>वास्तुशांत पूजा</p>
+        </div>
+
+    </button>
+
+</article>
+
+
+<!-- VASTU SHANTI PHOTO 4 -->
+
+<article class="gallery-item" data-category="vastu">
+
+    <button
+        type="button"
+        class="gallery-image-button"
+        data-image="gallery/vastukshanti/vastu-shanti4.jpg"
+        data-title="वास्तुशांत पूजा - 4">
+
+        <img
+            src="gallery/vastukshanti/vastu-shanti4.jpg"
+            alt="वास्तुशांत पूजा - छायाचित्र 4"
+            loading="lazy">
+
+        <div class="gallery-overlay">
+            <span>🔍</span>
+            <p>वास्तुशांत पूजा</p>
+        </div>
+
+    </button>
+
+</article>
+
+
+<!-- VASTU SHANTI PHOTO 5 -->
+
+<article class="gallery-item" data-category="vastu">
+
+    <button
+        type="button"
+        class="gallery-image-button"
+        data-image="gallery/vastukshanti/vastu-shanti5.jpg"
+        data-title="वास्तुशांत पूजा - 5">
+
+        <img
+            src="gallery/vastukshanti/vastu-shanti5.jpg"
+            alt="वास्तुशांत पूजा - छायाचित्र 5"
+            loading="lazy">
+
+        <div class="gallery-overlay">
+            <span>🔍</span>
+            <p>वास्तुशांत पूजा</p>
+        </div>
+
+    </button>
+
+</article>
+
+
+<!-- VASTU SHANTI PHOTO 6 -->
+
+<article class="gallery-item" data-category="vastu">
+
+    <button
+        type="button"
+        class="gallery-image-button"
+        data-image="gallery/vastukshanti/vastu-shanti6.jpg"
+        data-title="वास्तुशांत पूजा - 6">
+
+        <img
+            src="gallery/vastukshanti/vastu-shanti6.jpg"
+            alt="वास्तुशांत पूजा - छायाचित्र 6"
+            loading="lazy">
+
+        <div class="gallery-overlay">
+            <span>🔍</span>
+            <p>वास्तुशांत पूजा</p>
+        </div>
+
+    </button>
+
+</article>
+
+                    <!-- VIVAH -->
+
+                    <article
+                        class="gallery-item"
+                        data-category="vivah">
+
+                        <button
+                            class="gallery-image-button"
+                            data-image="gallery/vivah.jpg"
+                            data-title="विवाह विधी">
+
+                            <img
+                                src="gallery/vivah.jpg"
+                                alt="Vivah Ceremony"
+                                loading="lazy">
+
+                            <div class="gallery-overlay">
+
+                                <span>
+                                    🔍
+                                </span>
+
+                                <p>
+                                    विवाह
+                                </p>
+
+                            </div>
+
+                        </button>
+
+                    </article>
+
+
+                    <!-- NAVCHANDI -->
+
+                    <article
+                        class="gallery-item"
+                        data-category="navchandi">
+
+                        <button
+                            class="gallery-image-button"
+                            data-image="gallery/navchandi.jpg"
+                            data-title="नवचंडी याग">
+
+                            <img
+                                src="gallery/navchandi.jpg"
+                                alt="Navchandi Yag"
+                                loading="lazy">
+
+                            <div class="gallery-overlay">
+
+                                <span>
+                                    🔍
+                                </span>
+
+                                <p>
+                                    नवचंडी याग
+                                </p>
+
+                            </div>
+
+                        </button>
+
+                    </article>
+
+
+                    <!-- YAG -->
+
+                    <article
+                        class="gallery-item"
+                        data-category="yag">
+
+                        <button
+                            class="gallery-image-button"
+                            data-image="gallery/yag.jpg"
+                            data-title="धार्मिक याग">
+
+                            <img
+                                src="gallery/yag.jpg"
+                                alt="Yag Ceremony"
+                                loading="lazy">
+
+                            <div class="gallery-overlay">
+
+                                <span>
+                                    🔍
+                                </span>
+
+                                <p>
+                                    धार्मिक याग
+                                </p>
+
+                            </div>
+
+                        </button>
+
+                    </article>
+
+
+                    <!-- RUDRA -->
+
+                    <article
+                        class="gallery-item"
+                        data-category="rudra">
+
+                        <button
+                            class="gallery-image-button"
+                            data-image="gallery/rudra.jpg"
+                            data-title="रुद्र याग">
+
+                            <img
+                                src="gallery/rudra.jpg"
+                                alt="Rudra Puja"
+                                loading="lazy">
+
+                            <div class="gallery-overlay">
+
+                                <span>
+                                    🔍
+                                </span>
+
+                                <p>
+                                    रुद्र याग
+                                </p>
+
+                            </div>
+
+                        </button>
+
+                    </article>
+
+
+                    <!-- SANSKAR -->
+
+                    <article
+                        class="gallery-item"
+                        data-category="sanskar">
+
+                        <button
+                            class="gallery-image-button"
+                            data-image="gallery/sanskar.jpg"
+                            data-title="षोडश संस्कार">
+
+                            <img
+                                src="gallery/sanskar.jpg"
+                                alt="Sanskar Ceremony"
+                                loading="lazy">
+
+                            <div class="gallery-overlay">
+
+                                <span>
+                                    🔍
+                                </span>
+
+                                <p>
+                                    षोडश संस्कार
+                                </p>
+
+                            </div>
+
+                        </button>
+
+                    </article>
+
+
+                </div>
+
+
+                <div class="gallery-note">
+
+                    <span>
+                        📸
+                    </span>
+
+                    <p>
+                        आमच्या 50+ धार्मिक विधींची
+                        क्षणचित्रे लवकरच येथे पाहता येतील.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             WHY CHOOSE US SECTION
+        =================================================== -->
+
+        <section
+            id="why-us"
+            class="section why-us-section">
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        ⭐ आमची वैशिष्ट्ये
+                    </span>
+
+                    <h2>
+                        Why Choose
+                        <span>Vedam?</span>
+                    </h2>
+
+                    <p>
+                        श्रद्धा आणि विश्वासाने धार्मिक सेवा.
+                    </p>
+
+                </div>
+
+
+                <div class="features-grid">
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-icon">
+                            🕉️
+                        </div>
+
+                        <h3>
+                            शास्त्रोक्त पद्धती
+                        </h3>
+
+                        <p>
+                            पारंपरिक आणि शास्त्रोक्त
+                            पद्धतीने धार्मिक विधी.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-icon">
+                            📿
+                        </div>
+
+                        <h3>
+                            अनुभवी गुरुजी
+                        </h3>
+
+                        <p>
+                            धार्मिक विधी आणि संस्कारांसाठी
+                            अनुभवी मार्गदर्शन.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-icon">
+                            🪔
+                        </div>
+
+                        <h3>
+                            विविध सेवा
+                        </h3>
+
+                        <p>
+                            पूजा, याग, संस्कार, विवाह आणि
+                            विविध धार्मिक विधी.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-icon">
+                            🙏
+                        </div>
+
+                        <h3>
+                            श्रद्धा व समर्पण
+                        </h3>
+
+                        <p>
+                            प्रत्येक विधी भक्ती आणि
+                            समर्पणाने करण्याचा प्रयत्न.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-icon">
+                            📜
+                        </div>
+
+                        <h3>
+                            योग्य मार्गदर्शन
+                        </h3>
+
+                        <p>
+                            जन्म पत्रिका आणि धार्मिक
+                            विषयांवर योग्य मार्गदर्शन.
+                        </p>
+
+                    </article>
+
+
+                    <article class="feature-card">
+
+                        <div class="feature-icon">
+                            📍
+                        </div>
+
+                        <h3>
+                            पुणे व परिसर
+                        </h3>
+
+                        <p>
+                            आंबेगाव पठार, पुणे आणि
+                            आसपासच्या परिसरात सेवा.
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             SANSKRIT / SPIRITUAL QUOTE
+        =================================================== -->
+
+        <section class="quote-section">
+
+            <div class="container">
+
+                <div class="quote-content">
+
+                    <span class="quote-symbol">
+                        ॐ
+                    </span>
+
+                    <blockquote>
+                        सर्वे भवन्तु सुखिनः ।
+                        सर्वे सन्तु निरामयाः ॥
+                    </blockquote>
+
+                    <p>
+                        सर्वजण सुखी आणि निरोगी राहोत.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             TESTIMONIALS SECTION
+        =================================================== -->
+
+        <section
+            id="testimonials"
+            class="section testimonials-section">
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        💬 भक्तांचे अनुभव
+                    </span>
+
+                    <h2>
+                        What People
+                        <span>Say</span>
+                    </h2>
+
+                    <p>
+                        भक्तांच्या अनुभवातून विश्वासाची
+                        एक नवी ओळख.
+                    </p>
+
+                </div>
+
+
+                <div class="testimonials-grid">
+
+
+                    <article class="testimonial-card">
+
+                        <div class="testimonial-stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "गुरुजींनी पूजा अत्यंत सुंदर आणि
+                            शास्त्रोक्त पद्धतीने केली. प्रत्येक
+                            विधी समजावून सांगितला."
+                        </p>
+
+                        <div class="testimonial-person">
+
+                            <div class="person-avatar">
+                                R
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Rahul Patil
+                                </strong>
+
+                                <span>
+                                    Pune
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="testimonial-card">
+
+                        <div class="testimonial-stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "वास्तुशांत विधीचा अनुभव खूपच
+                            चांगला होता. गुरुजींचे मार्गदर्शन
+                            आणि पद्धत अतिशय समाधानकारक आहे."
+                        </p>
+
+                        <div class="testimonial-person">
+
+                            <div class="person-avatar">
+                                S
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Sneha Kulkarni
+                                </strong>
+
+                                <span>
+                                    Pune
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <article class="testimonial-card">
+
+                        <div class="testimonial-stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "धार्मिक विधीबाबत योग्य मार्गदर्शन
+                            मिळाले. गुरुजींचा स्वभाव आणि
+                            समजावून सांगण्याची पद्धत आवडली."
+                        </p>
+
+                        <div class="testimonial-person">
+
+                            <div class="person-avatar">
+                                A
+                            </div>
+
+                            <div>
+
+                                <strong>
+                                    Amit Joshi
+                                </strong>
+
+                                <span>
+                                    Pune
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             ENQUIRY / BOOKING SECTION
+        =================================================== -->
+
+        <section
+            id="enquiry"
+            class="section enquiry-section">
+
+            <div class="container">
+
+
+                <div class="enquiry-wrapper">
+
+
+                    <div class="enquiry-info">
+
+
+                        <span class="section-label">
+                            📝 सेवा बुक करा
+                        </span>
+
+
+                        <h2>
+                            Book a Puja
+                            <span>or Enquire</span>
+                        </h2>
+
+
+                        <p>
+                            आपल्या धार्मिक विधीसाठी
+                            आजच आमच्याशी संपर्क साधा.
+                        </p>
+
+
+                        <div class="enquiry-contact-list">
+
+
+                            <a
+                                href="tel:+917350325936"
+                                class="enquiry-contact-item">
+
+                                <span class="contact-item-icon">
+                                    ☎
+                                </span>
+
+                                <div>
+
+                                    <small>
+                                        Call Us
+                                    </small>
+
+                                    <strong>
+                                        7350325936
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+
+                            <a
+                                href="tel:+917385325936"
+                                class="enquiry-contact-item">
+
+                                <span class="contact-item-icon">
+                                    ☎
+                                </span>
+
+                                <div>
+
+                                    <small>
+                                        Call Us
+                                    </small>
+
+                                    <strong>
+                                        7385325936
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+
+                            <a
+                                href="https://wa.me/917350325936"
+                                target="_blank"
+                                rel="noopener"
+                                class="enquiry-contact-item">
+
+                                <span class="contact-item-icon">
+                                    💬
+                                </span>
+
+                                <div>
+
+                                    <small>
+                                        WhatsApp
+                                    </small>
+
+                                    <strong>
+                                        Chat With Us
+                                    </strong>
+
+                                </div>
+
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="enquiry-form-wrapper">
+
+                        <form
+                            id="enquiry-form"
+                            class="enquiry-form">
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="visitor-name">
+                                        Your Name
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="visitor-name"
+                                        name="name"
+                                        placeholder="Enter your name"
+                                        required>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="visitor-phone">
+                                        Mobile Number
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        id="visitor-phone"
+                                        name="phone"
+                                        placeholder="Enter mobile number"
+                                        maxlength="10"
+                                        required>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="service-select">
+                                    Select Service
+                                </label>
+
+                                <select
+                                    id="service-select"
+                                    name="service"
+                                    required>
+
+                                    <option value="">
+                                        Select a Puja / Service
+                                    </option>
+
+                                    <option value="सत्यनारायण पूजा">
+                                        सत्यनारायण पूजा
+                                    </option>
+
+                                    <option value="वास्तुशांत">
+                                        वास्तुशांत
+                                    </option>
+
+                                    <option value="विवाह">
+                                        विवाह
+                                    </option>
+
+                                    <option value="नवचंडी याग">
+                                        नवचंडी याग
+                                    </option>
+
+                                    <option value="दत्त याग">
+                                        दत्त याग
+                                    </option>
+
+                                    <option value="गणेश याग">
+                                        गणेश याग
+                                    </option>
+
+                                    <option value="विष्णू याग">
+                                        विष्णू याग
+                                    </option>
+
+                                    <option value="रुद्र याग">
+                                        रुद्र याग
+                                    </option>
+
+                                    <option value="लघुरुद्र अभिषेक">
+                                        लघुरुद्र अभिषेक
+                                    </option>
+
+                                    <option value="महारुद्र">
+                                        महारुद्र
+                                    </option>
+
+                                    <option value="षोडश संस्कार">
+                                        षोडश संस्कार
+                                    </option>
+
+                                    <option value="जनन शांती">
+                                        जनन शांती
+                                    </option>
+
+                                    <option value="जन्म पत्रिका काढणे">
+                                        जन्म पत्रिका काढणे
+                                    </option>
+
+                                    <option value="जन्म पत्रिका मार्गदर्शन">
+                                        जन्म पत्रिकेवरून योग्य मार्गदर्शन
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-row">
+
+                                <div class="form-group">
+
+                                    <label for="preferred-date">
+                                        Preferred Date
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="preferred-date"
+                                        name="date">
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="visitor-location">
+                                        Location
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="visitor-location"
+                                        name="location"
+                                        placeholder="Your location">
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="visitor-message">
+                                    Message
+                                </label>
+
+                                <textarea
+                                    id="visitor-message"
+                                    name="message"
+                                    rows="4"
+                                    placeholder="Tell us about your requirement..."></textarea>
+
+                            </div>
+
+
+                            <button
+                                type="submit"
+                                class="btn btn-whatsapp form-submit">
+
+                                <span>
+                                    💬
+                                </span>
+
+                                Send Enquiry on WhatsApp
+
+                            </button>
+
+
+                            <p class="form-note">
+
+                                Your enquiry will open directly
+                                in WhatsApp.
+
+                            </p>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             CONTACT SECTION
+        =================================================== -->
+
+        <section
+            id="contact"
+            class="section contact-section">
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        📞 संपर्क करा
+                    </span>
+
+                    <h2>
+                        Contact
+                        <span>Vedam</span>
+                    </h2>
+
+                    <p>
+                        आपल्या धार्मिक विधीसाठी
+                        आमच्याशी संपर्क साधा.
+                    </p>
+
+                </div>
+
+
+                <div class="contact-grid">
+
+
+                    <!-- PHONE -->
+
+                    <a
+                        href="tel:+917350325936"
+                        class="contact-card">
+
+                        <div class="contact-card-icon">
+                            ☎
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Phone
+                            </span>
+
+                            <h3>
+                                7350325936
+                            </h3>
+
+                            <p>
+                                Call Guruji
+                            </p>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- SECOND PHONE -->
+
+                    <a
+                        href="tel:+917385325936"
+                        class="contact-card">
+
+                        <div class="contact-card-icon">
+                            ☎
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Phone
+                            </span>
+
+                            <h3>
+                                7385325936
+                            </h3>
+
+                            <p>
+                                Call Guruji
+                            </p>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- WHATSAPP -->
+
+                    <a
+                        href="https://wa.me/917350325936"
+                        target="_blank"
+                        rel="noopener"
+                        class="contact-card">
+
+                        <div class="contact-card-icon">
+                            💬
+                        </div>
+
+                        <div>
+
+                            <span>
+                                WhatsApp
+                            </span>
+
+                            <h3>
+                                Chat Now
+                            </h3>
+
+                            <p>
+                                Send your enquiry
+                            </p>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="contact-card">
+
+                        <div class="contact-card-icon">
+                            📍
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Location
+                            </span>
+
+                            <h3>
+                                आंबेगाव पठार
+                            </h3>
+
+                            <p>
+                                Pune, Maharashtra
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MAP -->
+
+                <div class="map-wrapper">
+
+                    <div class="map-placeholder">
+
+                        <div class="map-placeholder-content">
+
+                            <span class="map-icon">
+                                📍
+                            </span>
+
+                            <h3>
+                                आंबेगाव पठार, पुणे
+                            </h3>
+
+                            <p>
+                                Our service location
+                            </p>
+
+                            <a
+                                href="https://www.google.com/maps/search/?api=1&query=Ambegaon+Pathar+Pune"
+                                target="_blank"
+                                rel="noopener"
+                                class="btn btn-primary">
+
+                                📍 Open in Google Maps
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ==================================================
+         FOOTER
+    =================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-container">
+
+
+            <div class="footer-brand">
+
+                <img
+                    src="logo/vedam-logo.jpg"
+                    alt="Vedam Dharmik Vidhi Kendra">
+
+                <div>
+
+                    <h3>
+                        वेदम धार्मिक विधी केंद्र
+                    </h3>
+
+                    <p>
+                        श्रद्धा • संस्कार • सेवा
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+                <a href="#services">
+                    Services
+                </a>
+
+                <a href="#gallery">
+                    Gallery
+                </a>
+
+                <a href="#contact">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <div class="footer-contact">
+
+                <a href="tel:+917350325936">
+                    ☎ 7350325936
+                </a>
+
+                <a
+                    href="https://wa.me/917350325936"
+                    target="_blank"
+                    rel="noopener">
+
+                    💬 WhatsApp
+
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    © 2026 Vedam Dharmik Vidhi Kendra.
+                    All Rights Reserved.
+                </p>
+
+                <p>
+                    Designed with 🙏 for Vedam
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==================================================
+         FLOATING CONTACT BUTTONS
+    =================================================== -->
+
+    <div class="floating-contact">
+
+
+        <a
+            href="tel:+917350325936"
+            class="floating-button floating-call"
+            aria-label="Call Guruji">
+
+            ☎
+
+            <span>
+                Call
+            </span>
+
+        </a>
+
+
+        <a
+            href="https://wa.me/917350325936"
+            target="_blank"
+            rel="noopener"
+            class="floating-button floating-whatsapp"
+            aria-label="WhatsApp Guruji">
+
+            💬
+
+            <span>
+                WhatsApp
+            </span>
+
+        </a>
+
+    </div>
+
+
+    <!-- ==================================================
+         SERVICE DETAILS MODAL
+    =================================================== -->
+
+    <div
+        id="service-modal"
+        class="modal"
+        aria-hidden="true">
+
+
+        <div
+            class="modal-overlay"
+            data-close-modal>
+        </div>
+
+
+        <div
+            class="modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="service-modal-title">
+
+
+            <button
+                class="modal-close"
+                data-close-modal
+                aria-label="Close service details">
+
+                ×
+
+            </button>
+
+
+            <div class="modal-icon">
+                🪔
+            </div>
+
+
+            <h2 id="service-modal-title">
+                Service
+            </h2>
+
+
+            <div
+                id="service-modal-body"
+                class="modal-body">
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <a
+                    href="tel:+917350325936"
+                    class="btn btn-primary">
+
+                    ☎ Call
+
+                </a>
+
+
+                <a
+                    href="https://wa.me/917350325936"
+                    target="_blank"
+                    rel="noopener"
+                    class="btn btn-whatsapp">
+
+                    💬 WhatsApp
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         GALLERY LIGHTBOX
+    =================================================== -->
+
+    <div
+        id="gallery-lightbox"
+        class="gallery-lightbox"
+        aria-hidden="true">
+
+
+        <button
+            class="lightbox-close"
+            id="lightbox-close"
+            aria-label="Close image">
+
+            ×
+
+        </button>
+
+
+        <button
+            class="lightbox-prev"
+            id="lightbox-prev"
+            aria-label="Previous image">
+
+            ‹
+
+        </button>
+
+
+        <div class="lightbox-content">
+
+            <img
+                id="lightbox-image"
+                src=""
+                alt="">
+
+            <p
+                id="lightbox-title"
+                class="lightbox-title">
+
+            </p>
+
+        </div>
+
+
+        <button
+            class="lightbox-next"
+            id="lightbox-next"
+            aria-label="Next image">
+
+            ›
+
+        </button>
+
+    </div>
+
+
+    <!-- ==================================================
+         GURUJI PROFILE MODAL
+    =================================================== -->
+
+    <div
+        class="guruji-profile-modal"
+        id="guruji-profile-modal"
+        aria-hidden="true">
+
+
+        <!-- BACKDROP -->
+
+        <div
+            class="guruji-profile-backdrop"
+            data-guruji-close>
+        </div>
+
+
+        <!-- PROFILE DIALOG -->
+
+        <div
+            class="guruji-profile-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="guruji-profile-name">
+
+
+            <!-- CLOSE -->
+
+            <button
+                type="button"
+                class="guruji-profile-close"
+                data-guruji-close
+                aria-label="Close Guruji profile">
+
+                &times;
+
+            </button>
+
+
+            <!-- IMAGE -->
+
+            <div class="guruji-profile-image-wrap">
+
+                <img
+                    id="guruji-profile-image"
+                    class="guruji-profile-image"
+                    src=""
+                    alt="Guruji">
+
+            </div>
+
+
+            <!-- CONTENT -->
+
+            <div class="guruji-profile-content">
+
+
+                <span class="guruji-profile-label">
+                    वेदम धार्मिक विधी केंद्र
+                </span>
+
+
+                <h2 id="guruji-profile-name">
+                    Guruji Name
+                </h2>
+
+
+                <p
+                    id="guruji-profile-role"
+                    class="guruji-profile-role">
+
+                    Vedic Purohit & Religious Services
+
+                </p>
+
+
+                <!-- DETAILS -->
+
+                <div class="guruji-profile-details">
+
+
+                    <!-- AGE -->
+
+                    <div class="guruji-profile-detail">
+
+                        <div class="guruji-profile-detail-icon">
+                            🎂
+                        </div>
+
+                        <div class="guruji-profile-detail-text">
+
+                            <small>
+                                Age
+                            </small>
+
+                            <strong id="guruji-profile-age">
+                                30 years
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- MOBILE -->
+
+                    <div class="guruji-profile-detail">
+
+                        <div class="guruji-profile-detail-icon">
+                            📞
+                        </div>
+
+                        <div class="guruji-profile-detail-text">
+
+                            <small>
+                                Mobile
+                            </small>
+
+                            <strong id="guruji-profile-mobile">
+                                7350325936
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EXPERIENCE -->
+
+                    <div class="guruji-profile-detail">
+
+                        <div class="guruji-profile-detail-icon">
+                            📿
+                        </div>
+
+                        <div class="guruji-profile-detail-text">
+
+                            <small>
+                                Experience
+                            </small>
+
+                            <strong id="guruji-profile-experience">
+                                15 years
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ADDRESS -->
+
+                    <div class="guruji-profile-detail">
+
+                        <div class="guruji-profile-detail-icon">
+                            📍
+                        </div>
+
+                        <div class="guruji-profile-detail-text">
+
+                            <small>
+                                Address
+                            </small>
+
+                            <strong id="guruji-profile-address">
+                                Shri Kanthview, Ambegaon Pathar
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- ACTION BUTTONS -->
+
+                <div class="guruji-profile-actions">
+
+
+                    <a
+                        id="guruji-profile-call"
+                        class="guruji-profile-call"
+                        href="#">
+
+                        📞 Call Guruji
+
+                    </a>
+
+
+                    <a
+                        id="guruji-profile-whatsapp"
+                        class="guruji-profile-whatsapp"
+                        href="#"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        💬 WhatsApp
+
+                    </a>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==================================================
+         BACK TO TOP BUTTON
+    =================================================== -->
+
+    <button
+        id="back-to-top"
+        class="back-to-top"
+        aria-label="Back to top">
+
+        ↑
+
+    </button>
+
+
+    <!-- ==================================================
+         GURUJI PROFILE JAVASCRIPT
+    =================================================== -->
+
+    <script>
+
+        /* =========================================
+           GURUJI DATA
+        ========================================== */
+
+        const gurujiProfiles = {
+
+            pratap: {
+
+                name: "Pratap Inamdar Guruji",
+
+                role: "Vedic Purohit & Religious Services",
+
+                age: "30 years",
+
+                mobile: "7350325936",
+
+                experience: "15 years",
+
+                address: "Shri Kanthview, Ambegaon Pathar",
+
+                photo: "guruji/pratap-guruji.jpg"
+
+            },
+
+
+            ajinkya: {
+
+                name: "Ajinkya Inamdar Guruji",
+
+                role: "Vedic Purohit & Religious Services",
+
+                age: "30 years",
+
+                mobile: "8888386676",
+
+                experience: "15 years",
+
+                address: "Shri Kanthview, Ambegaon Pathar",
+
+                photo: "guruji/ajinkya-guruji.jpg"
+
+            }
+
+        };
+
+
+        /* =========================================
+           GURUJI MODAL ELEMENTS
+        ========================================== */
+
+        const gurujiModal =
+            document.getElementById("guruji-profile-modal");
+
+        const gurujiImage =
+            document.getElementById("guruji-profile-image");
+
+        const gurujiName =
+            document.getElementById("guruji-profile-name");
+
+        const gurujiRole =
+            document.getElementById("guruji-profile-role");
+
+        const gurujiAge =
+            document.getElementById("guruji-profile-age");
+
+        const gurujiMobile =
+            document.getElementById("guruji-profile-mobile");
+
+        const gurujiExperience =
+            document.getElementById("guruji-profile-experience");
+
+        const gurujiAddress =
+            document.getElementById("guruji-profile-address");
+
+        const gurujiCall =
+            document.getElementById("guruji-profile-call");
+
+        const gurujiWhatsapp =
+            document.getElementById("guruji-profile-whatsapp");
+
+
+        /* =========================================
+           OPEN GURUJI PROFILE
+        ========================================== */
+
+        function openGurujiProfile(gurujiId) {
+
+            const profile =
+                gurujiProfiles[gurujiId];
+
+            if (!profile || !gurujiModal) {
+                return;
+            }
+
+
+            gurujiImage.src =
+                profile.photo;
+
+            gurujiImage.alt =
+                profile.name;
+
+
+            gurujiName.textContent =
+                profile.name;
+
+            gurujiRole.textContent =
+                profile.role;
+
+            gurujiAge.textContent =
+                profile.age;
+
+            gurujiMobile.textContent =
+                profile.mobile;
+
+            gurujiExperience.textContent =
+                profile.experience;
+
+            gurujiAddress.textContent =
+                profile.address;
+
+
+            /* CALL BUTTON */
+
+            gurujiCall.href =
+                "tel:+91" + profile.mobile;
+
+
+            /* WHATSAPP BUTTON */
+
+            gurujiWhatsapp.href =
+                "https://wa.me/91" + profile.mobile;
+
+
+            /* SHOW MODAL */
+
+            gurujiModal.classList.add("active");
+
+            gurujiModal.setAttribute(
+                "aria-hidden",
+                "false"
+            );
+
+            document.body.classList.add(
+                "guruji-modal-open"
+            );
+
+
+            /* MOVE FOCUS TO CLOSE BUTTON */
+
+            const closeButton =
+                gurujiModal.querySelector(
+                    ".guruji-profile-close"
+                );
+
+            if (closeButton) {
+
+                setTimeout(function () {
+
+                    closeButton.focus();
+
+                }, 100);
+
+            }
+
+        }
+
+
+        /* =========================================
+           CLOSE GURUJI PROFILE
+        ========================================== */
+
+        function closeGurujiProfile() {
+
+            if (!gurujiModal) {
+                return;
+            }
+
+            gurujiModal.classList.remove("active");
+
+            gurujiModal.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+
+            document.body.classList.remove(
+                "guruji-modal-open"
+            );
+
+        }
+
+
+        /* =========================================
+           GURUJI CARD CLICK
+        ========================================== */
+
+        document
+            .querySelectorAll(".guruji-profile-trigger")
+            .forEach(function (card) {
+
+                card.addEventListener(
+                    "click",
+                    function () {
+
+                        const gurujiId =
+                            this.getAttribute(
+                                "data-guruji"
+                            );
+
+                        openGurujiProfile(
+                            gurujiId
+                        );
+
+                    }
+                );
+
+            });
+
+
+        /* =========================================
+           CLOSE BUTTON / BACKDROP
+        ========================================== */
+
+        document
+            .querySelectorAll("[data-guruji-close]")
+            .forEach(function (element) {
+
+                element.addEventListener(
+                    "click",
+                    function () {
+
+                        closeGurujiProfile();
+
+                    }
+                );
+
+            });
+
+
+        /* =========================================
+           ESCAPE KEY
+        ========================================== */
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key === "Escape" &&
+                    gurujiModal &&
+                    gurujiModal.classList.contains("active")
+                ) {
+
+                    closeGurujiProfile();
+
+                }
+
+            }
+        );
+
+
+        /* =========================================
+           PREVENT IMAGE DRAGGING
+        ========================================== */
+
+        if (gurujiImage) {
+
+            gurujiImage.addEventListener(
+                "dragstart",
+                function (event) {
+
+                    event.preventDefault();
+
+                }
+            );
+
+        }
+
+    </script>
+
+
+    <!-- ==================================================
+         EXISTING WEBSITE JAVASCRIPT FILES
+    =================================================== -->
+
+    <script src="js/services.js"></script>
+
+    <script src="js/gallery.js"></script>
+
+    <script src="js/main.js"></script>
+
+
+</body>
+
+</html>
